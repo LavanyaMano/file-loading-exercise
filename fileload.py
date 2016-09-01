@@ -1,7 +1,6 @@
 import json
-with open('store_data.json', encoding='utf-8') as data_file:
+with open('store_data.json', 'r') as data_file:
     data = json.loads(data_file.read())
-
 
 
 price =[]
@@ -36,7 +35,7 @@ for item in data:
 
 print("-"*30)
 
-print("Number sold by each department :")
+print("Number sold by each department :\n")
 
 for i in range(len(dept)):
 	print("{} : {}nos".format(dept[i],dept_sold[i]))
@@ -58,9 +57,10 @@ print("The least expensive product is {}: ${:.2f}".format(data[l]["name"], min(p
 
 print("-"*30)
 
-new_list = sorted(data,key=lambda k: k["sold"])
-print("Top 10 best sellers are: ")
+new_list = list(reversed(sorted(data,key=lambda k: k["sold"])))
+print("Top 10 best sellers are: \n")
 
 for i in range(10):
-	print(new_list[i]["name"])
+	print(new_list[i]["name"],":")
+	print(new_list[i]["sold"])
 
